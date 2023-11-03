@@ -34,7 +34,7 @@ RUN git clone https://github.com/samtools/htslib.git && \
     cd ${NAMEH} && \
     git submodule update --init --recursive && \
     autoheader && \
-    autoconf && \
+    autoreconf -i && \
     ./configure && \
     make && \
     make install && \
