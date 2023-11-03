@@ -10,6 +10,7 @@ RUN apt-get clean all && \
     apt-get update --fix-missing && \
     apt-get install -y \
         libncurses5-dev \
+        libhts-dev \
         libbz2-dev \
         liblzma-dev \
         libgsl-dev \
