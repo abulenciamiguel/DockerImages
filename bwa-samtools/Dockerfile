@@ -76,7 +76,7 @@ RUN git clone https://github.com/samtools/bcftools.git && \
     ./configure && \
     make && \
     make install && \
-    cp ./${NAMEB}/bcftools /usr/local/bin/ && \
+    cp ./${NAMEB} /usr/local/bin/ && \
     cd .. && \
     strip /usr/local/bin/${NAMEB} && \
     rm -rf ./${NAMEB}/
