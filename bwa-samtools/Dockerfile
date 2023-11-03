@@ -58,7 +58,7 @@ RUN git clone https://github.com/samtools/samtools.git && \
     ./configure && \
     make && \
     make install && \
-    cp ./${NAMES}/samtools /usr/local/bin/ && \
+    cp ./${NAMES} /usr/local/bin/ && \
     cd .. && \
     rm -rf ./${NAMES}/
 
