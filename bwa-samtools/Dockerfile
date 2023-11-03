@@ -23,23 +23,17 @@ RUN apt-get clean all && \
     apt-get purge && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
-### Installing samtools/htslib/tabix/bgzip
 
+
+### Installing samtools/htslib/tabix/bgzip
 ENV VERSIONH 1.18
 ENV NAMEH "htslib"
-
-ENV VERSIONS 1.18
-ENV NAMES "samtools"
-
-ENV VERSIONH 1.18
-ENV NAMEB "bcftools"
-
 
 RUN git clone https://github.com/samtools/htslib.git && \
     cd ${NAMEH} && \
     git submodule update --init --recursive && \
-    autoconf && \
     autoheader && \
+    autoconf && \
     ./configure && \
     make && \
     make install && \
@@ -47,39 +41,53 @@ RUN git clone https://github.com/samtools/htslib.git && \
     cp ./${NAMEH}/tabix /usr/local/bin/ && \
     cp ./${NAMEH}/bgzip /usr/local/bin/ && \
     cp ./${NAMEH}/htsfile /usr/local/bin/ && \
+    rm -rf ./${NAMEH}/
 
-git clone https://github.com/samtools/samtools.git && \
+
+
+### Installing samtools/htslib/tabix/bgzip
+
+ENV VERSIONS 1.18
+ENV NAMES "samtools"
+
+
+RUN git clone https://github.com/samtools/samtools.git && \
     cd ${NAMES} && \
-    autoconf && \
     autoheader && \
+    autoconf && \
     ./configure && \
     make && \
     make install && \
-    cp ./${NAMES} /usr/local/bin/ && \
+    cp ./${NAMES}/samtools /usr/local/bin/ && \
     cd .. && \
-    strip /usr/local/bin/${NAMES}; true && \
+    rm -rf ./${NAMES}/
 
-git clone https://github.com/samtools/bcftools.git && \
+
+
+### Installing samtools/htslib/tabix/bgzip
+
+ENV VERSIONH 1.18
+ENV NAMEB "bcftools"
+
+RUN git clone https://github.com/samtools/bcftools.git && \
     cd ${NAMEB} && \
-    autoconf && \
     autoheader && \
+    autoconf && \
     ./configure && \
     make && \
     make install && \
-    cp ./${NAMEB} /usr/local/bin/ && \
+    cp ./${NAMEB}/bcftools /usr/local/bin/ && \
     cd .. && \
-    strip /usr/local/bin/${NAMEB}; true && \
-    rm -rf ./${NAMEH}/ && \
-    rm -rf ./${NAMES}/ && \
-    rm -rf ./${NAMEB}
+    strip /usr/local/bin/${NAMEB} && \
+    rm -rf ./${NAMEB}/
 
 
 
 ### Install bwa
+
 ENV VERSIONBWA 0.7.17
 ENV NAMEBWA "bwa"
 ENV URL "https://github.com/lh3/bwa/archive/refs/tags/v${VERSIONBWA}.tar.gz"
-
 
 RUN curl -SL $URL | tar -zxv && \
     cd ${NAMEBWA}-${VERSIONBWA} && \
