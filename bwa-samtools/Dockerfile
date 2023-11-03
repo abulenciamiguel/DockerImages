@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 WORKDIR /tmp
 
-### Install required packages (samtools)
+### Install required packages
 
 RUN apt-get clean all && \
     apt-get update --fix-missing && \
@@ -25,7 +25,7 @@ RUN apt-get clean all && \
 
 
 
-### Installing samtools/htslib/tabix/bgzip
+### Installing htslib/tabix/bgzip
 ENV VERSIONH 1.18
 ENV NAMEH "htslib"
 
@@ -45,7 +45,7 @@ RUN git clone https://github.com/samtools/htslib.git && \
 
 
 
-### Installing samtools/htslib/tabix/bgzip
+### Installing samtools
 
 ENV VERSIONS 1.18
 ENV NAMES "samtools"
@@ -64,7 +64,7 @@ RUN git clone https://github.com/samtools/samtools.git && \
 
 
 
-### Installing samtools/htslib/tabix/bgzip
+### Installing bcftools
 
 ENV VERSIONH 1.18
 ENV NAMEB "bcftools"
