@@ -9,12 +9,9 @@ WORKDIR /tmp
 RUN apt-get clean all && \
     apt-get update --fix-missing && \
     apt-get install -y \
-        libncurses5-dev \
-        libhts-dev \
         libbz2-dev \
         liblzma-dev \
-        libgsl-dev \
-        libcurl4-openssl-dev \
+        libncurses5-dev \
         autoconf \
         git \
         zlib1g-dev \
@@ -33,7 +30,6 @@ ENV NAMEH "htslib"
 RUN git clone https://github.com/samtools/htslib.git && \
     cd ${NAMEH} && \
     git submodule update --init --recursive && \
-    autoheader && \
     autoreconf -i && \
     ./configure && \
     make && \
@@ -55,7 +51,7 @@ ENV NAMES "samtools"
 RUN git clone https://github.com/samtools/samtools.git && \
     cd ${NAMES} && \
     autoheader && \
-    autoconf && \
+    autoconf -Wno-syntax && \
     ./configure && \
     make && \
     make install && \
@@ -97,3 +93,12 @@ RUN curl -SL $URL | tar -zxv && \
     cp ./${NAMEBWA}-${VERSIONBWA}/${NAMEBWA} /usr/local/bin/ && \
     strip /usr/local/bin/${NAMEBWA}; true && \
     rm -rf ./${NAMEBWA}-${VERSIONBWA}/
+
+
+RUN apt-get clean all && \
+    apt-get update --fix-missing && \
+    apt-get install -y \
+        libhts-dev && \
+    apt-get clean && \
+    apt-get purge && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
