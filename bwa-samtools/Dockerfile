@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 MAINTAINER Miguel FB Abulencia "abulencia.miguel@gmail.com"
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -6,19 +6,19 @@ WORKDIR /tmp
 
 ### Install required packages (samtools)
 
-RUN apt-get clean all &&\
-    apt-get update &&\
-    apt-get install -y  \
-        zlib1g-dev \
-        build-essential \
-        curl \
+RUN apt-get clean all && \
+    apt-get update --fix-missing && \
+    apt-get install -y \
         libncurses5-dev \
         libbz2-dev \
         liblzma-dev \
         libgsl-dev \
         libcurl4-openssl-dev \
         autoconf \
-        git && \
+        git \
+        zlib1g-dev \
+        build-essential \
+        curl && \
     apt-get clean && \
     apt-get purge && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
@@ -47,9 +47,6 @@ RUN git clone https://github.com/samtools/htslib.git && \
     cp ./${NAMEH}/tabix /usr/local/bin/ && \
     cp ./${NAMEH}/bgzip /usr/local/bin/ && \
     cp ./${NAMEH}/htsfile /usr/local/bin/ && \
-    strip /usr/local/bin/tabix; true && \
-    strip /usr/local/bin/bgzip; true && \
-    strip /usr/local/bin/htsfile; true && \
 
 git clone https://github.com/samtools/samtools.git && \
     cd ${NAMES} && \
@@ -79,7 +76,6 @@ git clone https://github.com/samtools/bcftools.git && \
 
 
 ### Install bwa
-
 ENV VERSIONBWA 0.7.17
 ENV NAMEBWA "bwa"
 ENV URL "https://github.com/lh3/bwa/archive/refs/tags/v${VERSIONBWA}.tar.gz"
