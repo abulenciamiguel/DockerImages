@@ -1,4 +1,4 @@
-# How to create a docker images and push it to docker hub.
+# How to create a docker image and push it to docker hub.
 
 ### Create a directory with a blank file named "Dockerfile". <br>
 ```
