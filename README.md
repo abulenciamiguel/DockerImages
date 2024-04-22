@@ -32,14 +32,22 @@ Below shows five directories each containing a docker file to build the differen
   <summary>Click me</summary>
 
 ```
-FROM ubuntu:20.04                                               # This is an image the OS. You can select other images with different OS at https://hub.docker.com/
-MAINTAINER Miguel FB Abulencia "abulencia.miguel@gmail.com"     # Pretty straightforward
-ARG DEBIAN_FRONTEND noninteractive								# Set to disable dialog pop ups during apt-get install
+# This is an image containing the OS.
+# You can select other images with different OS at https://hub.docker.com/
+FROM ubuntu:20.04                                      
 
-WORKDIR /tmp													# The work directory. You may choose other directory in the container
+# Pretty straightforward
+MAINTAINER Miguel FB Abulencia "abulencia.miguel@gmail.com"
+
+# Set to disable dialog pop ups during apt-get install
+ARG DEBIAN_FRONTEND noninteractive
 
 
-### Install required packages										
+# The work directory. You may choose other directory in the container
+WORKDIR /tmp
+
+
+### Install required packages
 # To install the "unzip" and "wget" tools
 # Cleaning of temporary files is done to reduce the size of the container
 
