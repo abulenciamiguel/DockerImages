@@ -16,11 +16,11 @@ Below shows five directories each containing a docker file to build the differen
 ```
 .
 ├── chopper
-│	└── Dockerfile
+│   └── Dockerfile
 ├── kofamscan
-│	└── Dockerfile
+│   └── Dockerfile
 ├── medaka
-│	└── Dockerfile
+│   └── Dockerfile
 ├── minimap2
 │   └── Dockerfile
 └── minimap2-samtools
