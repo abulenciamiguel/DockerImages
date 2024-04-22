@@ -7,7 +7,7 @@ mkdir chopper
 nano chopper/Dockerfile
 ```
 
-[! NOTE]
+[!NOTE]
 > You can choose any name for the directory. <br>
 > You may choose another name for the docker file but the default name, i.e., "Dockerfile", as shown below is strongly suggested. <br>
 
