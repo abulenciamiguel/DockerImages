@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 MAINTAINER Miguel FB Abulencia "abulencia.miguel@gmail.com"
-ENV DEBIAN_FRONTEND noninteractive
+ARG DEBIAN_FRONTEND noninteractive
 
 WORKDIR /tmp
 

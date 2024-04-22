@@ -77,7 +77,7 @@ RUN wget https://github.com/wdecoster/chopper/releases/download/v0.7.0/chopper-m
 ```
 </details>
 
-### Assuming you have created a Dockerfile inside the "chopper" directory, build the image
+### Assuming you have created a `Dockerfile` inside the `chopper` directory, build the image
 
 ```
 cd chopper
