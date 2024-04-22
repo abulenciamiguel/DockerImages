@@ -22,7 +22,7 @@ Below shows five directories each containing a docker file to build the differen
 ├── medaka
 │	└── Dockerfile
 ├── minimap2
-│	└── Dockerfile
+│   └── Dockerfile
 └── minimap2-samtools
     └── Dockerfile
 ```
